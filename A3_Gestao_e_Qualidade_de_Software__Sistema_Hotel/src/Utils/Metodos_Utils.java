@@ -15,6 +15,11 @@ public class Metodos_Utils {
             // Solicita ao usuário que insira a data de nascimento como texto
             String dataNascimentoStr = JOptionPane.showInputDialog(null, "Digite a data de nascimento (dd/MM/yyyy):");
 
+            // Se clicar em cancelar ou confirmar valor em branco, retornar null
+            if (dataNascimentoStr == null){
+                return null;
+            }
+
             // Verificar se a entrada possui o formato correto (dd/MM/yyyy)
             if (isValidDateFormat(dataNascimentoStr)) {
                 // Parsear a string da data de nascimento em um objeto java.util.Date
@@ -25,7 +30,6 @@ public class Metodos_Utils {
 
                 // Exibir a data formatada
                 dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//                JOptionPane.showMessageDialog(null, "Resultado: " + dateFormat.format(data_nascimento));
             } else {
                 JOptionPane.showMessageDialog(null, "Data de nascimento inválida.\nUse o formato dd/MM/yyyy.");
                 return solicitarData();
