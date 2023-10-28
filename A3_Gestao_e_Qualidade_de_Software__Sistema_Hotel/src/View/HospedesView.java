@@ -5,6 +5,7 @@ import Utils.Metodos_Utils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class HospedesView {
 
@@ -20,12 +21,12 @@ public class HospedesView {
 
 
     public HospedesModel cadastrarNovoHospede() {
-        String nome = JOptionPane.showInputDialog(null, "Nome:");
+        String nome = JOptionPane.showInputDialog(null, "Primeiro Nome:");
         String sobrenome = JOptionPane.showInputDialog(null, "Sobrenome:");
         String data_nascimento = new Metodos_Utils().solicitarData();
-        String cpf = JOptionPane.showInputDialog(null, "CPF:");
+        String cpf = JOptionPane.showInputDialog(null, "CPF (Apenas dígitos):");
         String genero = new Metodos_Utils().selecionarGenero();
-        String endereco = JOptionPane.showInputDialog(null, "Endereço:");
+        String endereco = JOptionPane.showInputDialog(null, "Endereço (Estado, Cidade, Rua, nº):");
         String telefone = JOptionPane.showInputDialog(null, "Telefone:");
         String email = JOptionPane.showInputDialog(null, "Email:");
 
@@ -36,10 +37,15 @@ public class HospedesView {
     }
 
     public static int menuDeletarHospede(){
-        int resposta = Integer.parseInt(JOptionPane.showInputDialog(null, "Menu Deletar Hospede:\n\n" +
-                "[1] Visualizar Hospedes\n" +
-                "[2] Deletar Hospede"));
-        return resposta;
+        try {
+            int resposta = Integer.parseInt(JOptionPane.showInputDialog(null, "Menu Deletar Hospede:\n\n" +
+                    "[1] Visualizar Hospedes\n" +
+                    "[2] Deletar Hospede\n" +
+                    "[3] Voltar"));
+            return resposta;
+        }catch (Exception erro){
+            return 3; // Em caso de exception, voltar para tela anterior.
+        }
     }
 
     public static void mostrarListaHospedes(java.util.List<HospedesModel> listaHospedes) {
@@ -79,4 +85,26 @@ public class HospedesView {
         String cpfHospede = JOptionPane.showInputDialog(null, "Deletar Hospede:\n\nDigite o CPF do Hospede a ser deletado:");
         return cpfHospede;
     }
+
+    public String solicitarCPFEditar(){
+        return JOptionPane.showInputDialog("Editar informações\n\nDigite o CPF do hospede: ");
+    }
+
+    public String mostrarOpcoesEditarHospede(){
+        try {
+            Object[] opcoes = {"Nome", "Sobrenome", "DT_Nascimento", "Genero", "Endereco", "Telefone", "Email"};
+            String retorno = (String) JOptionPane.showInputDialog(null, "Selecione o campo a ser atualizado:",
+                    "Escolha o Campo", JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+
+            return Objects.requireNonNullElse(retorno, "x");
+        }catch (Exception erro){
+            return "x";
+        }
+    }
+
+    public String inserirNovoValorString(String campo){
+                return JOptionPane.showInputDialog("Alterar valor de " + campo + " para:");
+    }
+
+
 }

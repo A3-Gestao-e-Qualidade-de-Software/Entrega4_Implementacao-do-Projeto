@@ -49,7 +49,7 @@ public class AppController {
 
                             switch (rsp_menuHospede){ // switch case do menu hospede
                                 case 1: // Em caso de opção 1 no menuHospede, para cadastrar um novo hospede.
-                                    HospedesController hospedesController= new HospedesController();
+                                    HospedesController hospedesController = new HospedesController();
                                     retorno = hospedesController.cadastrarHospede();
                                     break;
 
@@ -59,13 +59,14 @@ public class AppController {
                                     break;
 
                                 case 3: // Em caso de opção 3 no menuHospede, para editar hospede.
-                                    JOptionPane.showMessageDialog(null, "Tela de editar hospede.");
+                                    HospedesController hospedesController2 = new HospedesController();
+                                    retorno = hospedesController2.editarHospede();
                                     break;
 
                                 case 4: // Em caso de opção 4 no menuHospede, para listar hospedes.
                                     HospedesView hospedesView = new HospedesView();
                                     List<HospedesModel> listaHospedes = HospedesDAO.listarHospedes();
-                                    hospedesView.mostrarListaHospedes(listaHospedes);
+                                    HospedesView.mostrarListaHospedes(listaHospedes);
                                     retorno = 1;
                                     break;
 

@@ -1,6 +1,5 @@
 package DAO;
 
-import Controller.HospedesController;
 import Model.HospedesModel;
 
 import javax.swing.*;
@@ -8,7 +7,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HospedesDAO {
@@ -22,7 +24,7 @@ public class HospedesDAO {
             String sql =
                     "INSERT INTO" +
                     " Hospedes (Nome, Sobrenome, DT_Nascimento, CPF, Genero, Endereco, Telefone, Email)" +
-                    " VALUES (?, ?, STR_TO_DATE(? , '%d/%m/%Y'), ?, ?, ?, ?, ?)";
+                    " VALUES (?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, objHospedesModel.getNome());
             pstm.setString(2, objHospedesModel.getSobrenome());
@@ -37,9 +39,10 @@ public class HospedesDAO {
             JOptionPane.showMessageDialog(null, "Hospede cadastrado com sucesso!");
             return rowsaffected > 0;
         } catch (SQLException erro){
-            JOptionPane.showMessageDialog(null, "HospedesDAO: " + erro.getMessage());
-            HospedesController h_ctrl = new HospedesController();
-            h_ctrl.cadastrarHospede();
+            JOptionPane.showMessageDialog(null, "Hospede não cadastrado." +
+                    " Digite as informações corretamente.\n\n" +
+                    "Erro:\n" +
+                    "HospedesDAO: " + erro.getMessage());
             return false;
         }
     }
@@ -108,8 +111,9 @@ public class HospedesDAO {
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, cpfHospede);
             int rowsAffected = pstm.executeUpdate();
+            retorno = rowsAffected > 0;
 
-            if (retorno == rowsAffected > 0){
+            if (retorno == true){
                 JOptionPane.showMessageDialog(null, "Hospede de CPF: " +cpfHospede+ ", deletado com sucesso!");
             } else if (retorno == false) {
                 JOptionPane.showMessageDialog(null, "CPF não corresponde a nenhum hospede cadastrado.\n" +
@@ -132,6 +136,56 @@ public class HospedesDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+
+    public static void editarHospedeString (String cpf, String campo, String novoValor) throws SQLException, ClassNotFoundException {
+        conn = ConexaoDAO.conectaBD();
+        PreparedStatement pstm = null;
+
+        try {
+            String sql = "UPDATE Hospedes SET " + campo + " = ? WHERE CPF = ?";
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, novoValor);
+            pstm.setString(2, cpf);
+
+            int rowsAffected = pstm.executeUpdate();
+            if (rowsAffected > 0){
+                JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!!\n" +
+                        campo + " do hospede de CPF: " + cpf + " alterado.");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Atenção!\nInformações incorretas, verifique e tente novamente.");
+            }
+        } catch (SQLException erro){
+            JOptionPane.showMessageDialog(null, "HospedesDAO: " + erro.getMessage());
+        }
+    }
+
+
+    public static void editarHospedeData(String cpf, String campo, String novoValor) throws SQLException, ClassNotFoundException {
+        conn = ConexaoDAO.conectaBD();
+        PreparedStatement pstm = null;
+
+        try{
+            String sql = "UPDATE Hospedes SET " + campo + " = STR_TO_DATE(?, '%d/%m/%Y') WHERE CPF = ?";
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, novoValor);
+            pstm.setString(2, cpf);
+
+            int rowsAffected = pstm.executeUpdate();
+            if (rowsAffected > 0){
+                JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!!\n" +
+                        "Data de nascimento do hospede de CPF: " + cpf + " alterada.");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Atenção!\nInformações incorretas, verifique e tente novamente.");
+            }
+        } catch (SQLException erro){
+            JOptionPane.showMessageDialog(null, "HospedesDAO: " + erro.getMessage());
         }
     }
 }
