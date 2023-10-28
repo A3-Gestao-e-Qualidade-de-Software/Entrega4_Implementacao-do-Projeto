@@ -21,23 +21,22 @@ public class HospedesController {
     public int deletarHospede() throws SQLException, ClassNotFoundException {
         HospedesView hospedesView = new HospedesView();
         int resposta_menuDeletarHospede = HospedesView.menuDeletarHospede();
-        int retorno = 0;
+
+        while (resposta_menuDeletarHospede < 1 || resposta_menuDeletarHospede > 3){
+            resposta_menuDeletarHospede = HospedesView.menuDeletarHospede();
+        }
+
         switch (resposta_menuDeletarHospede) {
             case 1: // Visualisar hospedes
                 List<HospedesModel> listaHospedes = HospedesDAO.listarHospedes();
                 HospedesView.mostrarListaHospedes(listaHospedes);
-                retorno = 1;
                 break;
             case 2: // Deletar Hospedes
                 String cpfHospede = HospedesView.mostrarTelaDeletarHospede();
                 HospedesDAO.deletarHospede(cpfHospede); // --------Debugar método na HospedesDAO (SQL Exception para hospede com reserva cadastrada).------
-                retorno = 1;
-                break;
-            case 3:
-                retorno = 1;
                 break;
         }
-        return retorno;
+        return 1;
     }
 
 
