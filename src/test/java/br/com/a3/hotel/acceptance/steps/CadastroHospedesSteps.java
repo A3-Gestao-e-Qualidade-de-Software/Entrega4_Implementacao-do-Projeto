@@ -58,10 +58,17 @@ public class CadastroHospedesSteps {
 
     @Entao("o sistema deve cadastrar o hospede no banco de dados")
     public void o_sistema_deve_cadastrar_o_hospede_no_banco_de_dados() throws SQLException, ClassNotFoundException {
-
         hospedesDAO = new HospedesDAO();
         boolean cadastroHospede = hospedesDAO.cadastrarHospede(hospede);
 
         assertEquals(true, cadastroHospede);
+    }
+
+    @Entao("o sistema não deve cadastrar o hospede no banco de dados")
+    public void o_sistema_não_deve_cadastrar_o_hospede_no_banco_de_dados() throws SQLException, ClassNotFoundException {
+        hospedesDAO = new HospedesDAO();
+        boolean cadastroHospede = hospedesDAO.cadastrarHospede(hospede);
+
+        assertEquals(false, cadastroHospede);
     }
 }
