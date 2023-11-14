@@ -35,7 +35,6 @@ public class ListarHospedesSteps {
     }
     @Entao("uma lista de hospedes deve ser retornada")
     public void uma_lista_de_hospedes_deve_ser_retornada() {
-        System.out.println(listaDeHospedesRetornada.size());
         assertTrue(listaDeHospedesRetornada.size() > 0);
     }
 
@@ -55,7 +54,6 @@ public class ListarHospedesSteps {
     }
     @Entao("uma lista vazia deve ser retornada")
     public void uma_lista_vazia_deve_ser_retornada() {
-        System.out.println(listaDeHospedesRetornada.size());
         assertTrue(listaDeHospedesRetornada.isEmpty());
     }
 }
