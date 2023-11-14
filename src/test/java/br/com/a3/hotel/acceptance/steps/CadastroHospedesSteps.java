@@ -1,21 +1,16 @@
 package br.com.a3.hotel.acceptance.steps;
 
 import DAO.HospedesDAO;
-import br.com.a3.hotel.DAO.ConexaoDAO;
-import br.com.a3.hotel.controller.HospedesController;
+
 import br.com.a3.hotel.model.HospedesModel;
 import br.com.a3.hotel.view.HospedesView;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Quando;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 
-import javax.swing.*;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
