@@ -1,10 +1,10 @@
-Feature: Cadastro de hospede
+# language:pt
 
-  Scenario: Cadastrar um novo hospede
-    Given Dado que estou na tela de cadastro de hospedes
-    When Quando preencho os campos obrigatorios com os seguinte dados:
-    | Nome    | sobrenome | dtNascimento | cpf         | genero | endereco | telefone     | email       |
-    | Fulano  | Silva     | 01/01/2000   | 48600790000 | m      | MG, BH   | 31999999999  | teste@email |
-    And E clico em salvar
-    Then o hospede é cadastrado com sucesso
+  Funcionalidade: Cadastro de Hospede
 
+    Cenario: Cadastrar um novo hospede
+      Dado que o usuario está na tela de cadastro de hospede
+      Quando o usuario insere os seguintes dados:
+        | nome    | sobrenome | dtNascimento | cpf         | genero | endereco | telefone     | email       |
+        | Fulano  | Silva     | 01/01/2000   | 19859145067 | m      | MG, BH   | 31999999999  | fulano@email |
+      Entao o sistema deve cadastrar o hospede no banco de dados

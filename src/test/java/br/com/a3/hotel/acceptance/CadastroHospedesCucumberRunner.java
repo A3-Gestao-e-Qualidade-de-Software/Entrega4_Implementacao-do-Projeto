@@ -6,5 +6,5 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "classpath:features")
-public class CadastroHospedeCucumberRunner {
+public class CadastroHospedesCucumberRunner {
 }
