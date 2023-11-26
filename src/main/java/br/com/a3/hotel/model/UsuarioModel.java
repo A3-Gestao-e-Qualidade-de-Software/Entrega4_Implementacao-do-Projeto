@@ -3,7 +3,7 @@ package br.com.a3.hotel.model;
 public class UsuarioModel {
     private String nomeUsuario;
     private String funcional;
-    private String senhaUsuario;
+    private String senhaUsuario; 
 
     //  Constructor
     public UsuarioModel(String nomeUsuario, String funcional, String senhaUsuario) {
