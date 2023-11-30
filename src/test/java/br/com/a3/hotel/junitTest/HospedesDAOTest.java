@@ -33,23 +33,60 @@ public class HospedesDAOTest {
     @Test
     void deveCadastrarUmHospede() throws SQLException, ClassNotFoundException {
 
-        hospede = new HospedesModel("Fulano", "Silva", "01/01/2000", "19859145067", "m", "MG, BH", "31999999999", "fulano@email");
+        //ARRANGE
+        hospede = new HospedesModel(
+                "Fulano",
+                "Silva",
+                "01/01/2000",
+                "19859145067",
+                "m",
+                "MG, BH",
+                "31999999999",
+                "fulano@email");
+
+        //ACT
         boolean cadastroHospede = hospedesDAO.cadastrarHospede(hospede);
+
+        //ASSERT
         Assertions.assertEquals(true, cadastroHospede);
     }
 
     @Test
-    void naoDeveCadastrarUmHospede() throws SQLException, ClassNotFoundException {
-        hospede = new HospedesModel("", "", "", "", "", "", "", "");
+    void naoDeveCadastrarUmHospedeSeOsDadosInformadosForemVazios() throws SQLException, ClassNotFoundException {
+        hospede = new HospedesModel(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "");
         boolean cadastroHospede = hospedesDAO.cadastrarHospede(hospede);
         Assertions.assertEquals(false, cadastroHospede);
     }
 
     @Test
     void naoDeveCadastrarUmHospedeComCPFRepetido() throws SQLException, ClassNotFoundException {
-        HospedesModel hospede1 = new HospedesModel("Fulano", "Silva", "01/01/2000", "19859145067", "m", "MG, BH", "31999999999", "fulano@email");
+        HospedesModel hospede1 = new HospedesModel(
+                "Fulano",
+                "Silva",
+                "01/01/2000",
+                "19859145067",
+                "m",
+                "MG, BH",
+                "31999999999",
+                "fulano@email");
         hospedesDAO.cadastrarHospede(hospede1);
-        HospedesModel hospede2 = new HospedesModel("Beltrano", "Santos", "01/01/1980", "19859145067", "m", "SP, SP", "11999999999", "beltrano@email");
+        HospedesModel hospede2 = new HospedesModel(
+                "Beltrano",
+                "Santos",
+                "01/01/1980",
+                "19859145067",
+                "m",
+                "SP, SP",
+                "11999999999",
+                "beltrano@email");
         boolean cadastroHospede = hospedesDAO.cadastrarHospede(hospede2);
         Assertions.assertEquals(false, cadastroHospede);
     }
