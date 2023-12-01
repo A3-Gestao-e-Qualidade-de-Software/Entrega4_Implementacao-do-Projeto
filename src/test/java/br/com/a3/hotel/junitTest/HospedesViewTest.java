@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import br.com.a3.hotel.view.*;
 
-class HospedesViewTest {
+public class HospedesViewTest {
 
     HospedesView hospedesView = new HospedesView();
     @Test

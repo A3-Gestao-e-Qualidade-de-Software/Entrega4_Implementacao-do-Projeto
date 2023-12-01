@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 
-class UsuarioDAOTest {
+public class UsuarioDAOTest {
 
     private UsuarioModel usuario;
     private UsuarioDAO usuarioDAO;
