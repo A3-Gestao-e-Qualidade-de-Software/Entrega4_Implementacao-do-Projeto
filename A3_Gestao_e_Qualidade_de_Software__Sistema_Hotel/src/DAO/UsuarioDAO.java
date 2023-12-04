@@ -1,7 +1,7 @@
-package DAO;
+package br.com.a3.hotel.DAO;
 
-import Controller.AppController;
-import Model.UsuarioModel;
+import br.com.a3.hotel.model.*;
+import br.com.a3.hotel.controller.*;
 
 import javax.swing.*;
 import java.sql.Connection;
