@@ -1,6 +1,8 @@
 package DAO;
 
-import Model.HospedesModel;
+
+import br.com.a3.hotel.DAO.ConexaoDAO;
+import br.com.a3.hotel.model.*;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -23,8 +25,8 @@ public class HospedesDAO {
         try {
             String sql =
                     "INSERT INTO" +
-                    " Hospedes (Nome, Sobrenome, DT_Nascimento, CPF, Genero, Endereco, Telefone, Email)" +
-                    " VALUES (?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?)";
+                            " Hospedes (Nome, Sobrenome, DT_Nascimento, CPF, Genero, Endereco, Telefone, Email)" +
+                            " VALUES (?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, objHospedesModel.getNome());
             pstm.setString(2, objHospedesModel.getSobrenome());

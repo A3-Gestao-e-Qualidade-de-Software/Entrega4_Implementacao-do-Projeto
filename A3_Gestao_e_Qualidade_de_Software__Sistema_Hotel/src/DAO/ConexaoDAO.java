@@ -1,4 +1,4 @@
-package DAO;
+package br.com.a3.hotel.DAO;
 
 import javax.swing.*;
 import java.sql.Connection;
