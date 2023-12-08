@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"br.com.a3.hotel"},{"l":"br.com.a3.hotel.controller"},{"l":"br.com.a3.hotel.DAO"},{"l":"br.com.a3.hotel.model"},{"l":"br.com.a3.hotel.utils"},{"l":"br.com.a3.hotel.view"}];updateSearchResults();
