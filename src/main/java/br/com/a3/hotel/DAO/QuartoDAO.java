@@ -10,9 +10,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que gerencia operações relacionadas aos quartos no banco de dados.
+ */
+
 public class QuartoDAO {
     static Connection conn;
 
+   /**
+     * Lista todos os quartos cadastrados no banco de dados.
+     *
+     * @return Uma lista de QuartoModel com os dados de todos os quartos cadastrados.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public List<QuartoModel> listarQuartos() throws SQLException, ClassNotFoundException {
         new ConexaoDAO();
@@ -50,6 +61,15 @@ public class QuartoDAO {
 
     }
 
+    /**
+     * Lista os quartos disponíveis em um intervalo de datas especificado.
+     *
+     * @param checkIn  Data de check-in para verificar disponibilidade.
+     * @param checkOut Data de check-out para verificar disponibilidade.
+     * @return Uma lista de QuartoModel com os quartos disponíveis no intervalo de datas.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public static List<QuartoModel> listarQuartosDisponiveis(String checkIn, String checkOut) throws SQLException, ClassNotFoundException {
         new ConexaoDAO();
@@ -91,7 +111,15 @@ public class QuartoDAO {
         }
     }
 
-
+    /**
+     * Edita um campo específico de um quarto no banco de dados.
+     *
+     * @param idQuarto   ID do quarto a ser editado.
+     * @param campo      Campo a ser editado (por exemplo, Num_Quarto, Andar_Quarto, etc.).
+     * @param novoValor  Novo valor para o campo a ser editado.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public void editarQuarto(int idQuarto, String campo, String novoValor) throws SQLException, ClassNotFoundException {
         conn = ConexaoDAO.conectaBD();
