@@ -8,7 +8,19 @@ import br.com.a3.hotel.utils.*;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador responsável por operações relacionadas aos hóspedes.
+ */
+
 public class HospedesController {
+
+        /**
+     * Cadastra um novo hóspede no sistema.
+     *
+     * @return 1 se o cadastro for realizado com sucesso.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public int cadastrarHospede() throws SQLException, ClassNotFoundException {
         HospedesView hospedesView = new HospedesView();
@@ -18,6 +30,14 @@ public class HospedesController {
         return 1;
     }
 
+    /**
+     * Deleta um hóspede do sistema.
+     *
+     * @return 1 se a exclusão for realizada com sucesso.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
+    
     public int deletarHospede() throws SQLException, ClassNotFoundException {
         HospedesView hospedesView = new HospedesView();
         int resposta_menuDeletarHospede = HospedesView.menuDeletarHospede();
@@ -39,6 +59,13 @@ public class HospedesController {
         return 1;
     }
 
+        /**
+     * Edita um hóspede do sistema.
+     *
+     * @return 1 se a edição for realizada com sucesso.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public int editarHospede() throws SQLException, ClassNotFoundException {
         HospedesView hospedesView = new HospedesView();
