@@ -2,6 +2,10 @@ package br.com.a3.hotel.model;
 
 import java.util.Date;
 
+/**
+ * Classe que representa um modelo de hóspede.
+ */
+
 public class HospedesModel{
     private String nome;
     private String sobrenome;
@@ -11,8 +15,20 @@ public class HospedesModel{
     private String endereco;
     private String telefone;
     private String email;
-
-    //  Constructor
+    
+    /**
+     * Construtor para criar um objeto HospedesModel.
+     *
+     * @param nome         Nome do hóspede.
+     * @param sobrenome    Sobrenome do hóspede.
+     * @param dtNascimento Data de nascimento do hóspede.
+     * @param cpf          CPF do hóspede.
+     * @param genero       Gênero do hóspede.
+     * @param endereco     Endereço do hóspede.
+     * @param telefone     Número de telefone do hóspede.
+     * @param email        Endereço de e-mail do hóspede.
+     */
+    
     public HospedesModel(String nome, String sobrenome, String dtNascimento, String cpf, String genero, String endereco, String telefone, String email) {
         this.nome = nome;
         this.sobrenome = sobrenome;
