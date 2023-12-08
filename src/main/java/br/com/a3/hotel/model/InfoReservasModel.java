@@ -1,5 +1,8 @@
 package br.com.a3.hotel.model;
-
+/**
+ * Classe que representa informações sobre reservas.
+ */
+     
 public class InfoReservasModel {
     private static int ID_reserva;
     private static String nome_completo;
@@ -12,7 +15,20 @@ public class InfoReservasModel {
     private static int dias_reservados;
     private static Double valor_diaria;
     private static Double valor_total;
-
+   /**
+     * Construtor para criar um objeto InfoReservasModel.
+     * @param ID_reserva ID da reserva.
+     * @param nome_completo Nome completo do hóspede.
+     * @param num_quarto Número do quarto.
+     * @param andar_quarto Andar do quarto.
+     * @param tipo_quarto Tipo de quarto.
+     * @param DT_checkIN Data de check-in.
+     * @param DT_checkOUT Data de check-out.
+     * @param DT_reserva Data da reserva.
+     * @param dias_reservados Número de dias reservados.
+     * @param valor_diaria Valor da diária.
+     * @param valor_total Valor total da reserva.
+     */
     public InfoReservasModel(int ID_reserva, String nome_completo, int num_quarto, int andar_quarto, String tipo_quarto, String DT_checkIN, String DT_checkOUT, String DT_reserva, int dias_reservados, Double valor_diaria, Double valor_total) {
         this.ID_reserva = ID_reserva;
         this.nome_completo = nome_completo;
