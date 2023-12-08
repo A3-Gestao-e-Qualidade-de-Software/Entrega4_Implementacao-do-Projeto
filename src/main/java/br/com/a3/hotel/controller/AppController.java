@@ -10,7 +10,18 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Controlador principal que gerencia as operações do sistema.
+ */
+
 public class AppController {
+
+        /**
+     * Inicializa o sistema.
+     *
+     * @throws SQLException             se ocorrer um erro relacionado ao banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public void iniciar() throws SQLException, ClassNotFoundException {
         int resposta;
@@ -19,10 +30,7 @@ public class AppController {
         while (resposta < 1 || resposta > 3) {
             resposta = View.AppView.menuInicial();
         }
-/*
-Verificar se há possibilidade de criar função para rodar o sistema,
-recebendo como parâmetro a variável resposta --> resposta = View.AppView.menuInicial();:
- */
+
         switch (resposta) {
             // Em caso de opção 1 no menuInicial, para fazer login
             case 1:
@@ -57,6 +65,14 @@ recebendo como parâmetro a variável resposta --> resposta = View.AppView.menuI
         }
     }
 
+    /**
+     * Utiliza o sistema após o login.
+     *
+     * @param respostaLogin Resposta do menu de login.
+     * @throws SQLException             se ocorrer um erro relacionado ao banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
+    
     public static void utilizarSistemaLogado(int respostaLogin) throws SQLException, ClassNotFoundException {
 
         switch (respostaLogin) {
@@ -142,6 +158,13 @@ recebendo como parâmetro a variável resposta --> resposta = View.AppView.menuI
         }
     }
 
+    /**
+     * Responde à ação de login.
+     *
+     * @throws SQLException             se ocorrer um erro relacionado ao banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
+    
     public static void respostaLogin() throws SQLException, ClassNotFoundException {
         int respLogin = 0;
         respLogin = View.AppView.menuLogado();
