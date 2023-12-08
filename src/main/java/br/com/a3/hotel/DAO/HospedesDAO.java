@@ -15,8 +15,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Classe que gerencia operações relacionadas aos hóspedes no banco de dados.
+ */
+
 public class HospedesDAO {
     static Connection conn;
+
+     /**
+     * Cadastra um novo hóspede no banco de dados.
+     *
+     * @param objHospedesModel Objeto HospedesModel contendo os dados do hóspede a ser cadastrado.
+     * @return true se o cadastro for realizado com sucesso, false caso contrário.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public boolean cadastrarHospede(HospedesModel objHospedesModel) throws SQLException, ClassNotFoundException {
         new ConexaoDAO();
@@ -49,7 +62,13 @@ public class HospedesDAO {
         }
     }
 
-
+    /**
+     * Lista todos os hóspedes cadastrados no banco de dados.
+     *
+     * @return Uma lista de HospedesModel com os dados de todos os hóspedes cadastrados.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public static List<HospedesModel> listarHospedes() throws SQLException, ClassNotFoundException {
         new ConexaoDAO();
@@ -100,7 +119,14 @@ public class HospedesDAO {
         return listaHospedes;
     }
 
-
+    /**
+     * Deleta um hóspede do banco de dados com base no CPF.
+     *
+     * @param cpfHospede CPF do hóspede a ser deletado.
+     * @return true se o hóspede for deletado com sucesso, false caso contrário.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public static boolean deletarHospede(String cpfHospede) throws SQLException, ClassNotFoundException {
         new ConexaoDAO();
@@ -140,7 +166,15 @@ public class HospedesDAO {
             }
         }
     }
-
+    /**
+     * Edita um campo específico de um hóspede no banco de dados, exceto para campos de data.
+     *
+     * @param cpf       CPF do hóspede a ser editado.
+     * @param campo     Campo a ser editado (por exemplo, Nome, Sobrenome, etc.).
+     * @param novoValor Novo valor para o campo a ser editado.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public static void editarHospedeString (String cpf, String campo, String novoValor) throws SQLException, ClassNotFoundException {
         conn = ConexaoDAO.conectaBD();
@@ -166,7 +200,15 @@ public class HospedesDAO {
         }
     }
 
-
+    /**
+     * Edita a data de nascimento de um hóspede no banco de dados.
+     *
+     * @param cpf       CPF do hóspede a ser editado.
+     * @param campo     Campo de data a ser editado (por exemplo, DT_Nascimento).
+     * @param novoValor Novo valor para o campo de data a ser editado.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
     public static void editarHospedeData(String cpf, String campo, String novoValor) throws SQLException, ClassNotFoundException {
         conn = ConexaoDAO.conectaBD();
         PreparedStatement pstm = null;
