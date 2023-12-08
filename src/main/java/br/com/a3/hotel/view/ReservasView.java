@@ -17,7 +17,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * A classe ReservasView contém métodos para exibição de menus e interações relacionadas às reservas na interface de usuário.
+ */
+
 public class ReservasView {
+
+        /**
+     * Exibe o menu de reservas para seleção de operações.
+     *
+     * @return O número correspondente à operação selecionada no menu.
+     */
     // Exibindo Menu de Reservas:
     public static int mostrarMenuReservas(){
         try{
@@ -30,7 +40,13 @@ public class ReservasView {
             return 1;
         }
     }
-
+ /**
+     * Realiza o cadastro de uma nova reserva.
+     *
+     * @return Um objeto ReservasModel contendo os detalhes da nova reserva.
+     * @throws SQLException            Em caso de erro de SQL.
+     * @throws ClassNotFoundException Em caso de classe não encontrada.
+     */
     public static ReservasModel cadastrarNovaReserva() throws SQLException, ClassNotFoundException {
         int ID = 0;
         // Listando Hospedes e solicitando CPF do Hospede a efetuar reserva:
@@ -92,6 +108,13 @@ public class ReservasView {
 
     // Retorna a data no padrão yyyy-mm-dd para tornar possível a comparação
     // dos quartos disponíveis na Query SQL em QuartosDAO:
+
+        /**
+     * Formata a data para o padrão "yyyy-MM-dd" para comparações na base de dados.
+     *
+     * @param data A data a ser formatada (dd/MM/yyyy).
+     * @return A data formatada no padrão "yyyy-MM-dd".
+     */
     public static String padronizarDataString(String data){
         SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -107,6 +130,13 @@ public class ReservasView {
         }
     }
 
+        /**
+     * Exibe o menu para deletar uma reserva.
+     *
+     * @return O ID da reserva a ser deletada.
+     * @throws SQLException            Em caso de erro de SQL.
+     * @throws ClassNotFoundException Em caso de classe não encontrada.
+     */
 
     public static int menuDeletarReserva() throws SQLException, ClassNotFoundException {
         int id_Reserva;
