@@ -6,7 +6,18 @@ import javax.swing.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * A classe UsuarioView contém métodos para interações relacionadas aos usuários na interface de usuário.
+ */
+
 public class UsuarioView {
+
+    /**
+     * Realiza o cadastro de um novo usuário.
+     *
+     * @return Um objeto UsuarioModel contendo os detalhes do novo usuário.
+     */
+    
     public UsuarioModel cadastrarNovoUsuario() {
 
         String usuario = JOptionPane.showInputDialog(null, "Nome Completo:");
@@ -29,6 +40,11 @@ public class UsuarioView {
         return new UsuarioModel(usuario, funcional, senha);
     }
 
+        /**
+     * Autentica um usuário existente.
+     *
+     * @return Um objeto UsuarioModel contendo as credenciais do usuário para autenticação.
+     */
 
     public UsuarioModel autenticarUsuario() {
         String funcional = JOptionPane.showInputDialog(null, "Funcional (9 dígitos):");
@@ -43,11 +59,11 @@ public class UsuarioView {
         return new UsuarioModel(null,funcional, senha);
     }
 
-
-
-
-
-    //  Método para mostrar o diálogo de senha de forma segura
+        /**
+     * Mostra um diálogo de senha de forma segura para o usuário.
+     *
+     * @return Um array de caracteres representando a senha inserida pelo usuário.
+     */
     private char[] mostrarCampoSenhaSeguro() {
         JPasswordField cxSenha = new JPasswordField();
         int resultado = JOptionPane.showConfirmDialog(null, cxSenha, "Senha:",
@@ -71,7 +87,12 @@ public class UsuarioView {
     }
 
 
-    //  Método para criptografar senha
+    /**
+     * Criptografa a senha usando o algoritmo SHA-256.
+     *
+     * @param senha A senha a ser criptografada.
+     * @return A representação hexadecimal do hash da senha.
+     */
     public static String hashSenha(String senha) {
         try {
             // Cria uma instância de MessageDigest com o algoritmo SHA-256
