@@ -1,5 +1,9 @@
 package br.com.a3.hotel.model;
 
+/**
+ * Classe que representa um modelo de reserva.
+ */
+
 public class ReservasModel {
     private int id;
     private String CPF_Hospede;
@@ -9,6 +13,18 @@ public class ReservasModel {
     private String Data_Reserva;
     private int ID_Status_Reserva;
     private int Status_Ativa;
+
+        /**
+     * Construtor para criar um objeto ReservasModel.
+     * @param id Identificador da reserva.
+     * @param CPF_Hospede CPF do hóspede associado à reserva.
+     * @param ID_Quarto ID do quarto reservado.
+     * @param data_checkIN Data de check-in da reserva.
+     * @param data_checkOUT Data de check-out da reserva.
+     * @param data_Reserva Data em que a reserva foi feita.
+     * @param ID_Status_Reserva ID do status da reserva.
+     * @param status_Ativa Status ativo da reserva.
+     */
 
     public ReservasModel(int id, String CPF_Hospede, int ID_Quarto, String data_checkIN, String data_checkOUT, String data_Reserva, int ID_Status_Reserva, int status_Ativa) {
         this.id = id;
