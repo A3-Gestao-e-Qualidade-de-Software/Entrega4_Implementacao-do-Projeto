@@ -5,7 +5,17 @@ import java.awt.*;
 import java.util.List;
 import br.com.a3.hotel.model.*;
 
+/**
+ * A classe QuartoView contém métodos para exibição de listas de quartos na interface de usuário.
+ */
+
 public class QuartoView {
+
+        /**
+     * Mostra uma lista de quartos na interface de usuário.
+     *
+     * @param listaQuartos Lista de QuartosModel a ser exibida.
+     */
 
     public static void mostrarListaQuartos(List<QuartoModel> listaQuartos){
         JTextArea textArea = new JTextArea();
