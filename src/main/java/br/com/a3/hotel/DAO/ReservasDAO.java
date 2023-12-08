@@ -13,7 +13,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que gerencia operações relacionadas às reservas no banco de dados.
+ */
+
 public class ReservasDAO {
+
+        /**
+     * Cadastra uma nova reserva no banco de dados.
+     *
+     * @param objReservasModel Objeto ReservasModel contendo os dados da reserva a ser cadastrada.
+     * @return true se o cadastro for realizado com sucesso, false caso contrário.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
 
     public boolean cadastrarReserva(ReservasModel objReservasModel) throws SQLException, ClassNotFoundException {
         Connection conn = ConexaoDAO.conectaBD();
@@ -71,6 +84,15 @@ public class ReservasDAO {
         }
     }
 
+    /**
+     * Deleta uma reserva do banco de dados com base no ID da reserva.
+     *
+     * @param id_reserva ID da reserva a ser deletada.
+     * @return true se a reserva for deletada com sucesso, false caso contrário.
+     * @throws SQLException             se ocorrer um erro durante a execução da operação no banco de dados.
+     * @throws ClassNotFoundException se a classe do driver JDBC não for encontrada.
+     */
+    
     public static boolean deletarReserva(int id_reserva) throws SQLException, ClassNotFoundException {
         Connection conn = ConexaoDAO.conectaBD();
         PreparedStatement pstm = null;
