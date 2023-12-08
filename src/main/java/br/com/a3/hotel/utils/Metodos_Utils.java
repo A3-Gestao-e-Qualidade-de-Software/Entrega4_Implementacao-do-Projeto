@@ -5,7 +5,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Esta classe contém métodos utilitários para operações relacionadas a datas e interações de usuário.
+ */
+
 public class Metodos_Utils {
+
+        /**
+     * Solicita uma data ao usuário.
+     *
+     * @return A data formatada inserida pelo usuário.
+     */
 
     public String solicitarData() {
         Date data_nascimento;
@@ -44,11 +54,22 @@ public class Metodos_Utils {
         return dateFormat.format(data_nascimento);
 
     }
-    // Método para verificar se a data está no formato dd/MM/yyyy
+        /**
+     * Verifica se a data está no formato correto (dd/MM/yyyy).
+     *
+     * @param dateStr A data a ser verificada.
+     * @return true se estiver no formato correto, caso contrário false.
+     */
     private boolean isValidDateFormat(String dateStr) {
         return dateStr.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$");
     }
 
+    /**
+     * Solicita uma data de check-in ao usuário.
+     *
+     * @return A data formatada de check-in inserida pelo usuário.
+     */
+    
     public String solicitarDataCheckIn() {
         Date data_nascimento;
         SimpleDateFormat dateFormat;
@@ -87,7 +108,12 @@ public class Metodos_Utils {
 
     }
 
-
+    /**
+     * Solicita uma data de check-out ao usuário.
+     *
+     * @return A data formatada de check-out inserida pelo usuário.
+     */
+    
     public String solicitarDataCheckOut() {
         Date data_nascimento;
         SimpleDateFormat dateFormat;
@@ -126,7 +152,11 @@ public class Metodos_Utils {
 
     }
 
-
+    /**
+     * Permite ao usuário selecionar o gênero.
+     *
+     * @return O gênero selecionado pelo usuário (M ou F).
+     */
 
     public String selecionarGenero() {
         String[] opcoes = {"M", "F"};
