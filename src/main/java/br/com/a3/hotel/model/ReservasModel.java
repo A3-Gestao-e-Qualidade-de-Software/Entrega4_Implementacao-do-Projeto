@@ -2,7 +2,7 @@ package br.com.a3.hotel.model;
 
 public class ReservasModel {
     private int id;
-    private int ID_Hospede;
+    private String CPF_Hospede;
     private int ID_Quarto;
     private String Data_checkIN;
     private String Data_checkOUT;
@@ -10,9 +10,9 @@ public class ReservasModel {
     private int ID_Status_Reserva;
     private int Status_Ativa;
 
-    public ReservasModel(int id, int ID_Hospede, int ID_Quarto, String data_checkIN, String data_checkOUT, String data_Reserva, int ID_Status_Reserva, int status_Ativa) {
+    public ReservasModel(int id, String CPF_Hospede, int ID_Quarto, String data_checkIN, String data_checkOUT, String data_Reserva, int ID_Status_Reserva, int status_Ativa) {
         this.id = id;
-        this.ID_Hospede = ID_Hospede;
+        this.CPF_Hospede = CPF_Hospede;
         this.ID_Quarto = ID_Quarto;
         Data_checkIN = data_checkIN;
         Data_checkOUT = data_checkOUT;
@@ -29,12 +29,12 @@ public class ReservasModel {
         this.id = id;
     }
 
-    public int getID_Hospede() {
-        return ID_Hospede;
+    public String getCPF_Hospede() {
+        return CPF_Hospede;
     }
 
-    public void setID_Hospede(int ID_Hospede) {
-        this.ID_Hospede = ID_Hospede;
+    public void setCPF_Hospede(String CPF_Hospede) {
+        this.CPF_Hospede = CPF_Hospede;
     }
 
     public int getID_Quarto() {

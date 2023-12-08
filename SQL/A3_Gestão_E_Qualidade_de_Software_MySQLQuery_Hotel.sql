@@ -11,7 +11,7 @@ CREATE TABLE Quarto (
 
 --  Inserindo registros fixos: 4 quartos por andar (3 andares), dos tipos Standard(R$300,00), Comfort(R$400,00) e Deluxe(R$500,00).
 INSERT INTO
-	Quarto
+	Quarto 
     (Num_Quarto, Andar_Quarto, Tipo_Quarto, Preco_Noite, Status_Ocupacao, Descricao)
 VALUES
 	(31, 3, 'Comfort', 400.00, 'Disponível', 'Quarto confortável com ar condicionado, suíte, cama de casal, possúi serviço de limpeza, frigobar.'),
@@ -37,7 +37,7 @@ CREATE TABLE Hospedes (
     CPF VARCHAR(11) NOT NULL UNIQUE CHECK (length(CPF) = 11),
     Genero CHAR(1) NOT NULL CHECK (Genero IN('M', 'F')),
     Endereco VARCHAR(255) NOT NULL,
-    Telefone VARCHAR(15) NOT NULL,
+    Telefone VARCHAR(15),
     Email VARCHAR(255) UNIQUE
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE
 		Status_Reserva IN ('Confirmada', 'Pendente', 'Cancelada', 'Check-in', 'Check-out', 'No-show', 'Concluída')
         )
 	);
-
+    
 --  Inserindo valores fixos no campo Status_Reserva
 INSERT INTO
 	Status_Reservas
@@ -78,21 +78,38 @@ CREATE TABLE
     Status_Ativa BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (ID_Hospede) REFERENCES Hospedes(ID_Hospede),
     FOREIGN KEY (ID_Quarto) REFERENCES Quarto(ID_Quarto),
-    FOREIGN KEY (ID_Status_Reserva) REFERENCES Status_Reservas(ID_Status_Reserva)
+    FOREIGN KEY (ID_Status_Reserva) REFERENCES Status_Reservas(ID_Status_Reserva),
+    CHECK (DT_Check_OUT > DT_Check_IN)
     );
 
 
+-- Criando Trigger para impedir que a data de check-in seja inferior à data do dia atual.
+DELIMITER //
+CREATE TRIGGER valida_checkin
+BEFORE INSERT ON Reservas
+FOR EACH ROW
+BEGIN
+    IF NEW.DT_Check_IN < CURDATE() THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'A data de check-in não pode ser inferior à data atual';
+    END IF;
+END; //
+DELIMITER ;
+    
+    
 --  Criando tabela Usuario
 CREATE TABLE
 	Usuario(
     ID_Usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     NomeUsuario VARCHAR(100) NOT NULL,
     Funcional VARCHAR(9) NOT NULL UNIQUE CHECK(LENGTH(Funcional) = 9),
-    Senha VARCHAR(255) NOT NULL,
-    CONSTRAINT chk_Senha_SemEspaco CHECK (Senha NOT LIKE '% %')
+    Senha VARCHAR(255) NOT NULL
     );
 
 
+
+
+-- Queries para exibir tabelas e suas respectivas informações.
 USE hotel;
 SHOW TABLES;
 SELECT * FROM quarto;

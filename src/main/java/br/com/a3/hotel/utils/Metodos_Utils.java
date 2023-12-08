@@ -74,14 +74,14 @@ public class Metodos_Utils {
                 dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             } else {
                 JOptionPane.showMessageDialog(null, "Data de Check-In inválida.\nUse o formato dd/MM/yyyy.");
-                return solicitarData();
+                return solicitarDataCheckIn();
             }
         } catch (ParseException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao analisar a data.");
             JOptionPane.showMessageDialog(null, "Data de Check-In inválida.\nUse o formato dd/MM/yyyy.");
 //            solicitarData();
-            return solicitarData();
+            return solicitarDataCheckIn();
         }
         return dateFormat.format(data_nascimento);
 
@@ -113,14 +113,14 @@ public class Metodos_Utils {
                 dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             } else {
                 JOptionPane.showMessageDialog(null, "Data de Check-out inválida.\nUse o formato dd/MM/yyyy.");
-                return solicitarData();
+                return solicitarDataCheckOut();
             }
         } catch (ParseException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao analisar a data.");
             JOptionPane.showMessageDialog(null, "Data de Check-out inválida.\nUse o formato dd/MM/yyyy.");
 //            solicitarData();
-            return solicitarData();
+            return solicitarDataCheckOut();
         }
         return dateFormat.format(data_nascimento);
 

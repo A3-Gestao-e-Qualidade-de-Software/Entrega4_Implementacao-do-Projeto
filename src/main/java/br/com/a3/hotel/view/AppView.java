@@ -3,6 +3,7 @@ package View;
 import br.com.a3.hotel.controller.*;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 public class AppView {
     public static int menuInicial(){
@@ -13,12 +14,20 @@ public class AppView {
         return i;
     }
 
-    public static int menuLogado(){
+    public static int menuLogado() throws SQLException, ClassNotFoundException {
+        try{
+
         int i = Integer.parseInt(JOptionPane.showInputDialog(null, "Menu: \n" +
                 "[1] Hospedes\n" +
                 "[2] Quartos\n" +
                 "[3] Reservas\n" +
-                "[4] Encerrar sistema"));
+                "[4] Sair"));
+        if (i == 4){
+            System.exit(0);
+        }
         return i;
+        }catch (NumberFormatException e){
+            return 0;
+        }
     }
 }
