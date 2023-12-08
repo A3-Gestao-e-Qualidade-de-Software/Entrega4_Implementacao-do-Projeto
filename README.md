@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <h1>GESTÃO E QUALIDADE DE SOFTWARE <br><br> Entrega 01/12</h1>
 
 <h2>Testes Junit</h2>
