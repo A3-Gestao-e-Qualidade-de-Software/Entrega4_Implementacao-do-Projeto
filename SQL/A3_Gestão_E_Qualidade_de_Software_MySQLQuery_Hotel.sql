@@ -37,7 +37,11 @@ CREATE TABLE Hospedes (
     CPF VARCHAR(11) NOT NULL UNIQUE CHECK (length(CPF) = 11),
     Genero CHAR(1) NOT NULL CHECK (Genero IN('M', 'F')),
     Endereco VARCHAR(255) NOT NULL,
+<<<<<<< HEAD
+    Telefone VARCHAR(15),
+=======
     Telefone VARCHAR(15) NOT NULL,
+>>>>>>> 1699658872f50e64664362c9a82c3701c2b6626c
     Email VARCHAR(255) UNIQUE
 );
 
@@ -50,7 +54,11 @@ CREATE TABLE
 		Status_Reserva IN ('Confirmada', 'Pendente', 'Cancelada', 'Check-in', 'Check-out', 'No-show', 'Concluída')
         )
 	);
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 1699658872f50e64664362c9a82c3701c2b6626c
 --  Inserindo valores fixos no campo Status_Reserva
 INSERT INTO
 	Status_Reservas
@@ -78,21 +86,53 @@ CREATE TABLE
     Status_Ativa BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (ID_Hospede) REFERENCES Hospedes(ID_Hospede),
     FOREIGN KEY (ID_Quarto) REFERENCES Quarto(ID_Quarto),
+<<<<<<< HEAD
+    FOREIGN KEY (ID_Status_Reserva) REFERENCES Status_Reservas(ID_Status_Reserva),
+    CHECK (DT_Check_OUT > DT_Check_IN)
+    );
+
+
+-- Criando Trigger para impedir que a data de check-in seja inferior à data do dia atual.
+DELIMITER //
+CREATE TRIGGER valida_checkin
+BEFORE INSERT ON Reservas
+FOR EACH ROW
+BEGIN
+    IF NEW.DT_Check_IN < CURDATE() THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'A data de check-in não pode ser inferior à data atual';
+    END IF;
+END; //
+DELIMITER ;
+    
+    
+=======
     FOREIGN KEY (ID_Status_Reserva) REFERENCES Status_Reservas(ID_Status_Reserva)
     );
     
 
+>>>>>>> 1699658872f50e64664362c9a82c3701c2b6626c
 --  Criando tabela Usuario
 CREATE TABLE
 	Usuario(
     ID_Usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     NomeUsuario VARCHAR(100) NOT NULL,
     Funcional VARCHAR(9) NOT NULL UNIQUE CHECK(LENGTH(Funcional) = 9),
+<<<<<<< HEAD
+    Senha VARCHAR(255) NOT NULL
+    );
+
+
+
+
+-- Queries para exibir tabelas e suas respectivas informações.
+=======
     Senha VARCHAR(255) NOT NULL,
     CONSTRAINT chk_Senha_SemEspaco CHECK (Senha NOT LIKE '% %')
     );
 
 
+>>>>>>> 1699658872f50e64664362c9a82c3701c2b6626c
 USE hotel;
 SHOW TABLES;
 SELECT * FROM quarto;
